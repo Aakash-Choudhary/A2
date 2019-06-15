@@ -14,10 +14,11 @@ s.bind((recv_ip,recv_port))    #bind support tuple datatype
 #recieve data from sender
 while 4 > 2:
 	data=s.recvfrom(100)
-	print("message from sender " ,data[0])
+	ndata=data[0].encode('ascii')
+	print("message from sender " ,ndata)
 	print("sender IP + port --socket  ",data[1])
 	#reply to sender
-	reply = raw_input("type your reply  : ")
-	s.sendto(reply,data[1])
+	reply = input("type your reply  : ")
+	s.sendto(reply.encode('ascii'),data[1])
 
-si.close()
+s.close()
